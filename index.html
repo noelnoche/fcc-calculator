@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Noel Noche">
+    <meta name="description" content="Free Code Camp Zipline Project: Online Calculator. Completed by Noel Noche on February 12, 2016.">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      /*! normalize.css v3.0.2 | MIT License | git.io/normalize */img,legend{border:0}legend,td,th{padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}
+      /* style.min.css */
+      a,button{text-decoration:none;color:#fff}#main:after,#operator,.hidden{position:absolute}a,button,footer{color:#fff}body,footer{display:-webkit-box;display:-ms-flexbox}html{font-size:18px}body{width:100vw;height:100vh;font-family:Tahoma,serif;font-size:21.6px;font-size:1.2rem;text-align:center;background-color:#544;background:-webkit-linear-gradient(#544,#565);background:linear-gradient(#544,#565);display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}a:hover{color:#9cf;text-decoration:underline}.hidden{z-index:-99;top:-9999px;left:-9999px}.effect-01a{opacity:.9;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";box-shadow:none}#main{width:266px;width:14.778rem;margin:auto;padding:1rem 0;background-color:#ccc;background-image:url(https://dl.dropboxusercontent.com/u/3810405/freeCodeCamp/calculator/bg_brushed.png);background-size:50% auto;border-radius:.5rem;box-shadow:inset 0 0 10px #000}#main:after{z-index:-1;content:'';moz-box-shadow:0 0 100px 50px rgba(0,0,0,1);webkit-shadow:0 0 100px 50px rgba(0,0,0,1);box-shadow:0 0 100px 50px rgba(0,0,0,1);-webkit-transform:rotateX(80deg) translateZ(-75px) scale(1);transform:rotateX(80deg) translateZ(-75px) scale(1)}#display{width:171px;width:9.5rem;margin:1rem 0;padding:0 .7rem .1rem 0;text-align:right;text-shadow:none;text-shadow:-1px 0 rgba(0,0,0,.15);color:#4d4d4d;background-color:#f2bc04;border-top:9px solid #000;border-top:.5rem solid #000;border-bottom:9px solid #4d4e4f;border-bottom:.5rem solid #4d4e4f;border-left:9px solid #252525;border-left:.5rem solid #252525;border-right:9px solid #252525;border-right:.5rem solid #252525;box-shadow:inset 0 0 2px #000}#keypad{margin-bottom:1rem}button{width:45px;width:2.5rem;height:29.7px;height:1.65rem;font-size:14.4px;font-size:.8rem;outline:0;border:2.16px solid #eee;border:.12rem solid #eee;border-radius:.5rem;box-shadow:0 1px 2px #000}.buttons,.fn{margin-bottom:.5rem}.num{background:#474647}.fn{background:#d93434}.oper{background:#3498db}.bg-texture{background-size:250%;background-image:url(https://dl.dropboxusercontent.com/u/3810405/freecodecamp/calculator/bg_egg-shell.png)}#operator{margin:1.5rem 0 0 -1rem;font-size:9.9px;font-size:.55rem;color:#4d4d4d}footer{display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-ms-flex-pack:distribute;-ms-box-pack:center;-moz-box-pack:center;-webkit-box-pack:center;justify-content:center}footer>p{margin-right:1rem}	
+    </style>
+  
+
+    <title>Noel Noche | App Portfolio | Online Calculator</title>
+  </head>
+
+  <body>
+  <!--[if lt IE 9]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser.
+  Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+    <header class="hidden">
+      <h1>Free Code Camp Zipline</h1>
+      <h2>Online Calculator</h2>
+    </header>
+
+    <div id="main">
+      <div>
+        <input id="display" type="text" size="15"><span id="operator"></span>
+      </div>
+      <div id="keypad">
+        <button class="fn bg-texture" id="all-clear" type="button">AC</button>
+        <button class="fn bg-texture" id="clear-entry" type="button">CE</button>
+        <button class="fn oper bg-texture" id="percent" type="button">%</button>
+        <button class="fn oper bg-texture" id="inverse" type="button">&#177;</button><br>
+        <button class="buttons num bg-texture" type="button">7</button>
+        <button class="buttons num bg-texture" type="button">8</button>
+        <button class="buttons num bg-texture" type="button">9</button>
+        <button class="buttons oper bg-texture" type="button">&#247;</button><br>
+        <button class="buttons num bg-texture" type="button">4</button>
+        <button class="buttons num bg-texture" type="button">5</button>
+        <button class="buttons num bg-texture" type="button">6</button>
+        <button class="buttons oper bg-texture" type="button">&#215;</button><br>
+        <button class="buttons num bg-texture" type="button">1</button>
+        <button class="buttons num bg-texture" type="button">2</button>
+        <button class="buttons num bg-texture" type="button">3</button>
+        <button class="buttons oper bg-texture" type="button">&#8210;</button><br>
+        <button class="buttons num bg-texture" type="button">0</button>
+        <button class="buttons num bg-texture" id="decimal" type="button">.</button>
+        <button class="buttons oper bg-texture" type="button">=</button>
+        <button class="buttons oper bg-texture" type="button">+</button><br>
+      </div>
+    </div>
+
+    <footer>
+      <p>&#169; 2016 Noel Noche</p>
+      <p><a href="https://github.com/genkibit/fcc-calculator/issues" target="_blank">Report an issue</a></p>
+    </footer>
+
+    <script>
+      (function(){function r(){var a=this;a.className+=" effect-01a";window.setTimeout(function(){a.className=a.className.replace(" effect-01a","")},50)}function t(a){a=parseFloat(a).toPrecision(9)+"";a.match(/e/)?(a=a.split("e"),a=a[0].replace(/\d+[0]+$/,"")+"e"+a[1],a.match(/\d+\.e/)&&(a=a.split(".").join(""))):(a=a.replace(/[0]+$/,""),a.match(/\d+\.$/)&&(a=a.substr(0,a.length-1)));return a}function m(){u.innerHTML="*"===d?v:"/"===d?w:d}function z(){var a=this.innerHTML;r.call(this);if(a.match(/[0-9.]/))"."===
+      a&&(n.disabled=!0),!1===h?(b=a,h=!0):b="0"===b&&"0"===a?"0":8<b.length?b.substr(0,b.length-1)+a:b+a,"."===b&&(b="0."),b.match(/^0{1,}[1-9]/)&&(b=parseFloat(b)),k.value=b,g=!1;else a:{!1===h&&"="!==a&&(b="0",d=a,h=!0);""!==b&&"."!==b&&2!==e.length&&(e.push(b),b="");if(2===e.length&&d){var c,l,f;c=parseFloat(e[0]);l=parseFloat(e[1]);switch(d){case w:f=c/l;break;case v:f=c*l;break;case A:f=c-l;break;case "+":f=c+l}9<(f+"").length&&(f=t(f));"="===a?k.value=f:d=a;g=!0;e=[f]}else if("="!==a)d=a;else if(2>=
+      e.length&&"="===a)p();else break a;n.disabled=!1;m()}}function x(){!1===g&&(h=!1,n.disabled=!1,b="0",k.value=b)}function p(){g=!1;x();d=u.innerHTML="";e=[]}for(var k=document.getElementById("display"),c=document.querySelectorAll(".buttons"),y=document.querySelectorAll(".fn"),B=document.getElementById("clear-entry"),C=document.getElementById("all-clear"),n=document.getElementById("decimal"),D=document.getElementById("percent"),E=document.getElementById("inverse"),u=document.getElementById("operator"),
+      w=String.fromCharCode(247),v=String.fromCharCode(215),A=String.fromCharCode(8210),h=!1,g=!1,b="0",d="",e=[],q=0;q<c.length;q++)c[q].addEventListener("click",z,!1);for(c=0;c<y.length;c++)y[c].addEventListener("click",r,!1);D.onclick=function(){!0===h&&(b=k.value/100,k.value=t(b),!0===g&&(e=[],d="",m(""),g=!1))};E.onclick=function(){!0===h&&(b=-1*k.value,k.value=b,!0===g&&(e=[],d="",m(""),g=!1))};B.onclick=x;C.onclick=p;p();document.onload=void 0})();      
+    </script>
+  </body>
+</html>

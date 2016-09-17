@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Noel Noche">
+    <meta name="description" content="Free Code Camp Zipline Project: Online Calculator. Completed by Noel Noche on February 12, 2016.">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      /*! normalize.css v3.0.2 | MIT License | git.io/normalize */img,legend{border:0}legend,td,th{padding:0}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,optgroup,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre,textarea{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}table{border-collapse:collapse;border-spacing:0}
+    </style>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Noel Noche | App Portfolio | Online Calculator</title>
+  </head>
+
+  <body>
+  <!--[if lt IE 9]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser.
+  Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+    <header class="hidden">
+      <h1>Free Code Camp Zipline</h1>
+      <h2>Online Calculator</h2>
+    </header>
+
+    <div id="main">
+      <div>
+        <input id="display" type="text" size="15"><span id="operator"></span>
+      </div>
+      <div id="keypad">
+        <button class="fn bg-texture" id="all-clear" type="button">AC</button>
+        <button class="fn bg-texture" id="clear-entry" type="button">CE</button>
+        <button class="fn oper bg-texture" id="percent" type="button">%</button>
+        <button class="fn oper bg-texture" id="inverse" type="button">&#177;</button><br>
+        <button class="buttons num bg-texture" type="button">7</button>
+        <button class="buttons num bg-texture" type="button">8</button>
+        <button class="buttons num bg-texture" type="button">9</button>
+        <button class="buttons oper bg-texture" type="button">&#247;</button><br>
+        <button class="buttons num bg-texture" type="button">4</button>
+        <button class="buttons num bg-texture" type="button">5</button>
+        <button class="buttons num bg-texture" type="button">6</button>
+        <button class="buttons oper bg-texture" type="button">&#215;</button><br>
+        <button class="buttons num bg-texture" type="button">1</button>
+        <button class="buttons num bg-texture" type="button">2</button>
+        <button class="buttons num bg-texture" type="button">3</button>
+        <button class="buttons oper bg-texture" type="button">&#8210;</button><br>
+        <button class="buttons num bg-texture" type="button">0</button>
+        <button class="buttons num bg-texture" id="decimal" type="button">.</button>
+        <button class="buttons oper bg-texture" type="button">=</button>
+        <button class="buttons oper bg-texture" type="button">+</button><br>
+      </div>
+    </div>
+
+    <footer>
+      <p>&#169; 2016 Noel Noche</p>
+      <p><a href="https://github.com/genkibit/fcc-calculator/issues" target="_blank">Report an issue</a></p>
+    </footer>
+
+    <script src="calculator.js"></script>
+  </body>
+</html>

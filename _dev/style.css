@@ -1,0 +1,168 @@
+html {
+  font-size: 18px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: Tahoma, serif;
+  font-size: 21.599px;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #544;
+  background: -webkit-linear-gradient(#544, #565);
+  background: linear-gradient(#544, #565);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #9cf;
+  text-decoration: underline;
+}
+
+.hidden {
+  position: absolute;
+  z-index: -99;
+  top: -9999px;
+  left: -9999px;
+}
+
+/* For keypress effect */
+.effect-01a {
+  opacity: 0.9;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  box-shadow: none;
+}
+
+#main {
+  width: 266.004px;
+  width: 14.778rem;
+  margin: auto;
+  padding: 18px 0;
+  padding: 1rem 0;
+  background-color: #ccc;
+  background-image: url("https://dl.dropboxusercontent.com/u/3810405/freeCodeCamp/calculator/bg_brushed.png");
+  background-size: 50% auto;
+  border-radius: 0.5rem;
+  box-shadow: inset 0 0 10px #000000;
+}
+
+/* For cast shadow */
+#main:after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  moz-box-shadow: 0 0 100px 50px rgba(0, 0, 0, 1);
+  webkit-shadow: 0 0 100px 50px rgba(0, 0, 0, 1);
+  box-shadow: 0 0 100px 50px rgba(0, 0, 0, 1);
+  -webkit-transform: rotateX(80deg) translateZ(-75px) scale(1);
+  transform: rotateX(80deg) translateZ(-75px) scale(1);
+}
+
+#display {
+  width: 171px;
+  width: 9.5rem;
+  margin: 18px 0;
+  margin: 1rem 0;
+  padding: 0 12.6px 1.8px 0;
+  padding: 0 0.7rem 0.1rem 0;
+  text-align: right;
+  text-shadow: none;
+  text-shadow: -1px 0px rgba(0,0,0,0.15);
+  color: #4d4d4d;
+  background-color: #f2bc04;
+  border-top: 9px solid #000000;
+  border-top: 0.5rem solid #000000;
+  border-bottom: 9px solid #4d4e4f;
+  border-bottom: 0.5rem solid #4d4e4f;
+  border-left: 9px solid #252525;
+  border-left: 0.5rem solid #252525;
+  border-right: 9px solid #252525;
+  border-right: 0.5rem solid #252525;
+  box-shadow: inset 0 0 2px #000000;
+}
+
+#keypad {
+  margin-bottom: 18px;
+  margin-bottom: 1rem;
+}
+
+button {
+  width: 45px;
+  width: 2.5rem;
+  height: 29.7px;
+  height: 1.65rem;
+  font-size: 14.4px;
+  font-size: 0.8rem;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
+  border: 2.16px solid #eee;
+  border: 0.12rem solid #eee;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px #000000;
+}
+
+.buttons, .fn {
+  margin-bottom: 9px;
+  margin-bottom: 0.5rem;
+}
+
+.num {
+  background: #474647;
+}
+
+.fn {
+  background: #d93434;
+}
+
+.oper {
+  background: #3498db;
+}
+
+.bg-texture {
+  background-size: 250%;
+  background-image: url("https://dl.dropboxusercontent.com/u/3810405/freecodecamp/calculator/bg_egg-shell.png"), -webkit-linear-gradient(top, #474647, #000000);
+  background-image: url("https://dl.dropboxusercontent.com/u/3810405/freecodecamp/calculator/bg_egg-shell.png"), linear-gradient(to bottom, #474647, #000000);
+  background-image: url("https://dl.dropboxusercontent.com/u/3810405/freecodecamp/calculator/bg_egg-shell.png");
+}
+
+#operator {
+  position: absolute;
+  margin: 27px 0 0 -18px;
+  margin: 1.5rem 0 0 -1rem;
+  font-size: 9.9px;
+  font-size: 0.55rem;
+  color: #4d4d4d;
+}
+
+footer {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+  -ms-box-pack: center;
+  -moz-box-pack: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+footer > p {
+  margin-right: 18px;
+  margin-right: 1rem;	
+}
+
