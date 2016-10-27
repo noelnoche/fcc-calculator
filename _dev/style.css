@@ -9,9 +9,7 @@ body {
   font-size: 21.599px;
   font-size: 1.2rem;
   text-align: center;
-  background-color: #544;
-  background: -webkit-linear-gradient(#544, #565);
-  background: linear-gradient(#544, #565);
+  background-color: #033;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -45,9 +43,13 @@ a:hover {
   box-shadow: none;
 }
 
+.effect-01b {
+  background-color: #090;
+}
+
 #main {
-  width: 266.004px;
-  width: 14.778rem;
+  width: 270px;
+  width: 15rem;
   margin: auto;
   padding: 18px 0;
   padding: 1rem 0;
@@ -55,7 +57,7 @@ a:hover {
   background-image: url("https://dl.dropboxusercontent.com/u/3810405/freeCodeCamp/calculator/bg_brushed.png");
   background-size: 50% auto;
   border-radius: 0.5rem;
-  box-shadow: inset 0 0 10px #000000;
+  box-shadow: inset 0 0 10px #999;
 }
 
 /* For cast shadow */
@@ -71,12 +73,12 @@ a:hover {
 }
 
 #display {
-  width: 171px;
-  width: 9.5rem;
+  width: 185px;
+  width: 10.278rem;
   margin: 18px 0;
   margin: 1rem 0;
-  padding: 0 12.6px 1.8px 0;
-  padding: 0 0.7rem 0.1rem 0;
+  padding: 0 9px;
+  padding: 0 0.5rem;
   text-align: right;
   text-shadow: none;
   text-shadow: -1px 0px rgba(0,0,0,0.15);
@@ -93,16 +95,25 @@ a:hover {
   box-shadow: inset 0 0 2px #000000;
 }
 
+#operator {
+  position: absolute;
+  margin: 27px 0 0 -18px;
+  margin: 1.5rem 0 0 -1rem;
+  font-size: 9.9px;
+  font-size: 0.55rem;
+  color: #4d4d4d;
+}
+
 #keypad {
   margin-bottom: 18px;
   margin-bottom: 1rem;
 }
 
 button {
-  width: 45px;
-  width: 2.5rem;
-  height: 29.7px;
-  height: 1.65rem;
+  width: 50px;
+  width: 2.778rem;
+  height: 30px;
+  height: 1.667rem;
   font-size: 14.4px;
   font-size: 0.8rem;
   color: #fff;
@@ -119,16 +130,16 @@ button {
   margin-bottom: 0.5rem;
 }
 
-.num {
-  background: #474647;
-}
-
 .fn {
   background: #d93434;
 }
 
 .oper {
   background: #3498db;
+}
+
+.num {
+  background: #474647;
 }
 
 .bg-texture {
@@ -138,16 +149,8 @@ button {
   background-image: url("https://dl.dropboxusercontent.com/u/3810405/freecodecamp/calculator/bg_egg-shell.png");
 }
 
-#operator {
-  position: absolute;
-  margin: 27px 0 0 -18px;
-  margin: 1.5rem 0 0 -1rem;
-  font-size: 9.9px;
-  font-size: 0.55rem;
-  color: #4d4d4d;
-}
-
 footer {
+  font-size: 0.9rem;
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
