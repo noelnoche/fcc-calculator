@@ -27,5 +27,10 @@ Code provided under an **[MIT license](https://github.com/genkibit/fcc-calculato
 
 Changelog
 ---
-+  20160917 -- v1.0.0
++ 20160917 -- v1.0.0
 	- Initial release.
++ 20161027 -- v1.1.1
+	- Refactored codebase.
+	- Improved equals key functionality.
+	- Fixed minor bugs caused by unusual key combinations.
+	- Cleaned up CSS and changed background color.
