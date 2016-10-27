@@ -1,148 +1,137 @@
 (function() {
 
-"use strict";
+'use strict';
 
   // Button assignments
-  var display = document.getElementById("display");
-  var btns = document.querySelectorAll(".buttons");
-  var fnBtns = document.querySelectorAll(".fn");
-  var ce = document.getElementById("clear-entry");
-  var ac = document.getElementById("all-clear");
-  var decimal = document.getElementById("decimal");
-  var percent = document.getElementById("percent");
-  var inverse = document.getElementById("inverse");
-  var operator = document.getElementById("operator");
+  var display = document.getElementById('display');
+  var btns = document.querySelectorAll('.buttons');
+  var ce = document.getElementById('clear-entry');
+  var ac = document.getElementById('all-clear');
+  var decimal = document.getElementById('decimal');
+  var percent = document.getElementById('percent');
+  var inverse = document.getElementById('inverse');
+  var equals = document.getElementById('equals');
+
+  // For key press animation
+  var pressEffect = document.querySelectorAll('.press-effect');
+
+  // For showing currently active operator
+  var operator = document.getElementById('operator');
+
+  // For translate()
   var divSign = String.fromCharCode(247);
   var mltSign = String.fromCharCode(215);
   var minusSign = String.fromCharCode(8210);
 
   // For keeping track of calculation state
   var calcStart = false;
+  var enableEquals = false;
   var isResult = false;
-
+  
   // For current entry, operator and operands
-  var cur = "0";
-  var curOper = "";
-  var operands = [];
+  var curInput = '0';
+  var curOper = '';
+  var lastInput = '';
+
+  // For holdng elements to evaluate: [numA, operator, numB]
+  var evalStack = [];
 
 
   // Animates a key press
   function press_effect() {
     var that = this;
-    that.className = that.className + " effect-01a";
-    window.setTimeout(function() { that.className = that.className.replace(" effect-01a", ""); }, 50);
+    that.className = that.className + ' effect-01a';
+    window.setTimeout(function() { that.className = that.className.replace(' effect-01a', ''); }, 50);
   }
 
   // Truncates and rounds long answers to nine significant digits
-  function truncate_result(num) {
+  function truncate(num) {
     var array;
-    num = parseFloat(num).toPrecision(9) + "";
+    num = parseFloat(num).toPrecision(9) + '';
 
     // 5.00000000e+25 --> 5.e+25 --> 5e+25
     // 5.05000000e-25 --> 5.05e-25
     if (num.match(/e/)) {
-      array = num.split("e");
-      num = array[0].replace(/\d+[0]+$/, "") + "e" + array[1];
+      array = num.split('e');
+      num = array[0].replace(/\d+[0]+$/, '') + 'e' + array[1];
 
       if (num.match(/\d+\.e/)) {
-        num = num.split(".").join("");
+        num = num.split('.').join('');
       }
     }
 
     // 5.00000000 --> 5. ---> 5
     // 5.05000000 --> 5.05
     else {
-      num = num.replace(/[0]+$/, "");
+      num = num.replace(/[0]+$/, '');
 
       if (num.match(/\d+\.$/)) {
         num = num.substr(0, num.length - 1);
       }
     }
 
-     return num;
+    return num;
   }
 
-  // Calculates and updates the current answer and operator
-  function calculate(sym) {
-    var x, y, result, resultLen;
-
-    x = parseFloat(operands[0]);
-    y = parseFloat(operands[1]);
-
-    switch (curOper) {
-      case divSign:
-        result = x / y;
-        break;
-      case mltSign:
-        result = x * y;
-        break;
-      case minusSign:
-        result = x - y;
-        break;
-      case "+":
-        result = x + y;
-        break;
-      default:
-        break;
+  // Calculates the answer
+  function calculate() {
+    var a, b, sym, result, resultLen;
+    
+    if (!evalStack.length) {
+      return;
     }
+    else {
+      a = parseFloat(evalStack[0]);
+      b = parseFloat(evalStack[2]);
+      sym = evalStack[1];
+      isResult = true;
 
-    resultLen = (result + "").length;
+      switch (sym) {
+        case '/':
+          result = a / b;
+          break;
+        case '*':
+          result = a * b;
+          break;
+        case '-':
+          result = a - b;
+          break;
+        case '+':
+          result = a + b;
+          break;
+        default:
+          break;
+      }
 
-    if (resultLen > 9) {
-      result = truncate_result(result);
-    }
-
-    // Pressing equals displays the answer; otherwise continue calculation chain
-    if (sym === "=") {
+      result = truncate(result);
       display.value = result;
+      evalStack = [];
+      evalStack.push(result);
+      evalStack.push(curOper);
     }
-    else {
-      curOper = sym;
-    }
-
-    // Necessary for proper execution of percent and inverse keys
-    isResult = true;
-
-    // Next x value will take result
-    operands = [result];
   }
 
-  // Callback for number key input
-  function proc_nums(input) {
-
-    if (input === ".") {
-      decimal.disabled = true;
-    }
-
-    // Takes and updates current entry, restricting it to 9 digits
-    if (calcStart === false) {
-      cur = input;
-      calcStart = true;
-    }
-    else if (cur === "0" && input === "0") {
-      cur = "0";
+  // Handler for equals button
+  function run_equals() {
+    if (enableEquals === false) {
+      return;
     }
     else {
-      if (cur.length > 8) {
-        cur = cur.substr(0, cur.length-1) + input;
-      } else {
-        cur += input;
+      if (curInput !== '') {
+        lastInput = curInput;
+      }
+      
+      if (lastInput === '') {
+        lastInput = evalStack[0];
       }
     }
 
-    if (cur === ".") {
-      cur = "0.";
-    }
-
-    // 02.005 --> 2.005
-    if (cur.match(/^0{1,}[1-9]/)) {
-       cur = parseFloat(cur);
-     }
-
-    display.value = cur;
-    isResult = false;
+    evalStack.push(lastInput);
+    curInput = '';
+    calculate();
+    
   }
-
+  
   // Shows currently active operator in the calculator LCD
   function show_operator() {
     var oper;
@@ -160,133 +149,185 @@
     operator.innerHTML = oper;
   }
 
+  // Tranlates HTML math symbols into JS operators
+  function translate_sym(domData) {
+    var result;
+
+    switch (domData) {
+      case divSign:
+        result = '/';
+        break;
+      case mltSign:
+        result = '*';
+        break;
+      case minusSign:
+        result = '-';
+        break;
+      default:
+        result = domData;
+    }
+
+    return result;
+  }
+
+  // Callback for number key input
+  function proc_nums(data) {
+
+    // Limit length of input value to 9 digits
+    if (curInput.length > 9) {
+      return;
+    }
+
+    if (data === '.') {
+      if (curInput === '') {
+        curInput = '0';
+      }
+      decimal.disabled = true;
+    }
+
+    curInput += data;
+    curInput = parseFloat(curInput) + '';
+    display.value = curInput;
+  }
+
   // Callback for operator key input
-  function proc_operator(input) {
+  function proc_operator(data) {
+    var stackLen = evalStack.length;
+    decimal.disabled = false;
+    curOper = data;
+    show_operator(curOper);
 
-    // If user presses an operator key first when start calculation,
-    // the first operand takes a value of zero
-    if (calcStart === false && input !== "=") {
-      cur = "0";
-      curOper = input;
-      calcStart = true;
+    // if [numA] or [numA, curOper, numB] --> push curOper or calculate respectively
+    // else if [numA, curOper] --> change curOper
+    // else error message
+    if (evalStack[stackLen-1].match(/[0-9]/)) {     
+      if (stackLen === 1) {
+        evalStack.push(curOper);
+      }
+      else {
+        calculate();
+      }
     }
-
-    if (cur !== "" && cur !== "." && operands.length !== 2) {
-      operands.push(cur);
-      cur = "";
-    }
-
-    // If get two operands, perform calculation; otherwise update current operator
-    // This is so calculation uses the last pressed operator
-    if (operands.length === 2 && curOper) {
-      calculate(input);
-    }
-    else if (input !== "=") {
-      curOper = input;
-    }
-    else if (operands.length <= 2 && input === "=")  {
-      clear_all();
+    else if (evalStack[stackLen-1].match(/[\*\-\+\/]/)) {
+      evalStack.pop();
+      evalStack.push(curOper);
     }
     else {
+      return;
+    }
+  }
+
+  // Controls input logic
+  function proc_key() {
+    var keyVal = translate_sym(this.innerHTML);
+
+    if (keyVal.match(/[0-9.]/)) {
+      calcStart = true;
+      proc_nums(keyVal);
+    }
+    
+    if (keyVal.match(/[\*\-\+\/]/)) {
+
+      // If press an operator key first, set first num to 0
+      if (calcStart === false) {
+        calcStart = true;
+        curInput = '0';
+      }
+
+      if (curInput !== '') {
+        evalStack.push(curInput);
+        curInput = '';
+      }
+
+      proc_operator(keyVal);
+    }
+
+    if (evalStack.length === 2) {
+      enableEquals = true;
+    }
+    else {
+      enableEquals = false;
+    }
+  }
+
+  // Handler for percent key
+  function to_percent() {
+    if (calcStart === false) {
+      return;
+    }
+    else {
+      curOper = '/';
+
+      if (isResult === false) {
+        curInput = (curInput / 100) + '';
+        display.value = truncate(curInput);
+      }
+      else {
+        evalStack = [evalStack[0], curOper, '100'];
+        calculate();
+      }
+    }
+  }
+
+  // Handler for inverse key
+  function to_inverse() {
+    if (calcStart === false) {
+      return;
+    }
+    else {
+      curOper = '*';
+
+      if (isResult === false) {
+        curInput = (curInput * -1.0) + '';
+        display.value = curInput;
+      }
+      else {
+        evalStack = [evalStack[0], curOper, '-1'];
+        calculate();
+      }
+    }
+  }
+
+  // Handler for clear functions
+  function clear() {
+
+    // Prevents entry clear if input value is a result value
+    if (this === 'entry' && isResult === true) {
       return;
     }
 
     decimal.disabled = false;
-    show_operator();
-  }
+    curInput = '0';
+    display.value = '0';
 
-  // Coordinates operand and operator input order
-  function proc_input() {
-    var data = this.innerHTML;
-
-    press_effect.call(this);
-
-    if (data.match(/[0-9.]/)) {
-      proc_nums(data);
-    }
-    else {
-      proc_operator(data);
-    }
-  }
-
-  // Converts current entry to percent
-  function to_percent() {
-    if (calcStart === true) {
-      cur = display.value / 100;
-      display.value = truncate_result(cur);
-
-      // If the current converted value is an answer, then remove
-      // the original from the calculation flow (to replaced with
-      // the converted value
-      if (isResult === true) {
-        operands = [];
-        curOper = "";
-        show_operator("");
-        isResult = false;
-      }
-    }
-    else {
-      return;
-    }
-  }
-
-  // Gets the inverse value of current entry
-  function to_inverse() {
-    if (calcStart === true) {
-      cur = display.value * -1;
-      display.value = cur;
-
-      // Using same reasoning as to_percent()
-      if (isResult === true) {
-        operands = [];
-        curOper = "";
-        show_operator("");
-        isResult = false;
-      }
-    }
-    else {
-      return;
-    }
-  }
-
-  // Clears current entry
-  function clear_entry() {
-    if (isResult === false) {
+    if (this === 'all') {
       calcStart = false;
-      decimal.disabled = false;
-      cur = "0";
-      display.value = cur;
+      enableEquals = false;
+      isResult = false;
+      curOper = '';
+      show_operator();
+      lastInput = '';
+      evalStack = [];
     }
-  }
-
-  // Clears and resets all values
-  function clear_all() {
-    isResult = false;
-    clear_entry();
-    operator.innerHTML = "";
-    curOper = "";
-    operands = [];
   }
 
   function init() {
-    clear_all();
+    clear('all');
   }
   
-
   for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", proc_input, false);
+    btns[i].addEventListener('click', proc_key, false);
   }
 
-  for (var j = 0; j < fnBtns.length; j++) {
-    fnBtns[j].addEventListener("click", press_effect, false);
+  for (var j = 0; j < pressEffect.length; j++) {
+    pressEffect[j].addEventListener('click', press_effect, false);
   }
 
-
+  equals.onclick = run_equals;
   percent.onclick = to_percent;
   inverse.onclick = to_inverse;
-  ce.onclick = clear_entry;
-  ac.onclick = clear_all;
+  ce.onclick = clear.bind('entry');
+  ac.onclick = clear.bind('all');
 
   document.onload = init();
-
 })();
