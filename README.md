@@ -34,3 +34,7 @@ Changelog
 	- Improved equals key functionality.
 	- Fixed minor bugs caused by unusual key combinations.
 	- Cleaned up CSS and changed background color.
++ 20170224 -- v1.1.2
+  - Cleaned up dead code.
+  - Fixed unused functions arguments.
+  - Moved image files to local directory.
