@@ -6,7 +6,7 @@
   var display = document.getElementById('display');
   var btns = document.querySelectorAll('.buttons');
   var ce = document.getElementById('clear-entry');
-  var ac = document.getElementById('all-clear');
+  var ac = document.getElementById('clear-all');
   var decimal = document.getElementById('decimal');
   var percent = document.getElementById('percent');
   var inverse = document.getElementById('inverse');
@@ -75,7 +75,7 @@
 
   // Calculates the answer
   function calculate() {
-    var a, b, sym, result, resultLen;
+    var a, b, sym, result;
     
     if (!evalStack.length) {
       return;
@@ -136,10 +136,10 @@
   function show_operator() {
     var oper;
 
-    if (curOper === "*") {
+    if (curOper === '*') {
       oper = mltSign;
     }
-    else if (curOper === "/") {
+    else if (curOper === '/') {
       oper = divSign;
     }
     else {
@@ -195,7 +195,7 @@
     var stackLen = evalStack.length;
     decimal.disabled = false;
     curOper = data;
-    show_operator(curOper);
+    show_operator();
 
     // if [numA] or [numA, curOper, numB] --> push curOper or calculate respectively
     // else if [numA, curOper] --> change curOper
@@ -312,7 +312,7 @@
   }
 
   function init() {
-    clear('all');
+    clear.bind('all')();
   }
   
   for (var i = 0; i < btns.length; i++) {
