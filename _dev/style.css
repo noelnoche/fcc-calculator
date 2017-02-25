@@ -54,7 +54,7 @@ a:hover {
   padding: 18px 0;
   padding: 1rem 0;
   background-color: #ccc;
-  background-image: url("images/bg_brushed.png");
+  background-image: url("assets/images/bg_brushed.png");
   background-size: 50% auto;
   border-radius: 0.5rem;
   box-shadow: inset 0 0 10px #999;
@@ -144,9 +144,9 @@ button {
 
 .bg-texture {
   background-size: 250%;
-  background-image: url("images/bg_egg-shell.png"), -webkit-linear-gradient(top, #474647, #000000);
-  background-image: url("images/bg_egg-shell.png"), linear-gradient(to bottom, #474647, #000000);
-  background-image: url("images/bg_egg-shell.png");
+  background-image: url("assets/images/bg_egg-shell.png"), -webkit-linear-gradient(top, #474647, #000000);
+  background-image: url("assets/images/bg_egg-shell.png"), linear-gradient(to bottom, #474647, #000000);
+  background-image: url("assets/images/bg_egg-shell.png");
 }
 
 footer {
